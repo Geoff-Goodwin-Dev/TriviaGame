@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--META TAGS-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+
+  <!--TITLE-->
+  <title>Trivia Game of Thrones</title>
+
+  <!--LINKING JQUERY-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!--LINKING JAVASCRIPT FILE-->
+  <script src="assets/javascript/app.js"></script>
+
+  <!--IMPORTING GOOGLE FONT-->
+  <link href="https://fonts.googleapis.com/css?family=Fondamento" rel="stylesheet">
+
+  <!--LINKING CSS FILES-->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+
+<body>
+<div id="headerTopRow">
+
+  <!--INSTRUCTIONS BUTTON IN TOP RIGHT CORNER-->
+  <div id="instructionsButton" class="topRight" onclick=openInstructions()>
+    <div id="instructionsCaption">Instructions</div>
+    <img src="assets/images/questionIcon.png" id="instructionsIcon" class="floatLeft">
+  </div>
+  <h1 id="gameHeader" class="headerText">Trivia Game (of Thrones)</h1>
+</div>
+
+<div id="bodyFullWidth">
+  <div id="bodyContainer" class="pageBodyContainer">
+
+    <div id="statsRow" class="contentRow">
+      <div class="thirdWidth">
+        <div class="panelBody">
+          <header class="panelHeader headerText">Correct Answers</header>
+          <div id="wins" class="panelBodyContent">0</div>
+        </div>
+      </div>
+
+      <div class="thirdWidth">
+        <div class="panelBody">
+          <header class="panelHeader headerText">Time Remaining</header>
+          <div id="timer" class="panelBodyContent">00:00</div>
+        </div>
+      </div>
+
+      <div class="thirdWidth">
+        <div class="panelBody">
+          <header class="panelHeader headerText">Incorrect Answers</header>
+          <div id="losses" class="panelBodyContent">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="questionContainer" class="contentRow">
+      <img src="assets/images/scroll.png" id="scrollBackground">
+      <div id="questionTextContainer" class="scrollCenter">
+        <p>
+          <img src="assets/images/illuminatedQ.png" id="bigQ">
+          <span id="question"></span>
+        </p>
+        <div id="answerButtons">
+          <hr>
+          <button id="answer1" class="answerButton"></button>
+          <button id="answer2" class="answerButton"></button>
+          <button id="answer3" class="answerButton"></button>
+          <button id="answer4" class="answerButton"></button>
+        </div>
+        <div id="iconRow">
+          <hr>
+          <div id="gameDesignInfo">
+            &copy Geoffrey Goodwin 2018
+          </div>
+        </div>
+
+      </div>
+
+      <div id="startState" class="scrollCenter">
+        <p>Press Start to Begin!</p>
+        <button id="start" class="answerButton">Start</button>
+        <img src="assets/images/GOTbanner.jpg" id="GOTbanner">
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div id="modalInstruction" class="modalBackground">
+      <div class="modalContent zoomAnimation">
+        <header class="headerText">
+          <span class="boldButton topRight" onclick=closeInstructions()>&times;</span>
+          <h2>Game Instructions</h2>
+        </header>
+        <hr>
+        <div class="bulletListContainer">
+          <ul>
+            <li>You will be given a random number at the start of the round.</li>
+            <li>There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your selected crystal point counter.</li>
+            <li>You win the round by matching your selected crystal counter value to the random number.</li>
+            <li>You lose the round if your selected crystal counter value goes above the random number.</li>
+            <li>The value of each crystal is hidden from you until you click on it.</li>
+            <li>Each time a new round starts, the values of the crystals will change.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="modalWin" class="modalBackground">
+      <div class="modalContent zoomAnimation">
+        <header class="headerText">
+          <span class="boldButton topRight" onclick=closeInstructions()>&times;</span>
+          <h2>You Won!</h2>
+        </header>
+        <hr>
+        <div class="bulletListContainer">
+          <p>Congratulations! You were able to use the crystals' values to match the target number.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
