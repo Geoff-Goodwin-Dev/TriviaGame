@@ -15,7 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 * This is a web page exercise.  As such, you're welcome to download a copy and run it locally for review purposes.  
 
-* Otherwise, you can view the output at: https://geoff-goodwin-dev.github.io/Crystals-Collector-Game/
+* Otherwise, you can view the output at: https://geoff-goodwin-dev.github.io/TriviaGame/
 ```
 
 ### Prerequisites
@@ -77,7 +77,7 @@ Not Applicable: This is a static website for educational purposes and therefore 
 ## Versioning
 
 * version 1.0 - Creation of file structure, game mechanics, and initial look and feel
-
+* version 1.1 - Updates to gameplay, replacement of alerts with modals, and introduction of re-play functionality
 ## Authors
 
 * **Geoff Goodwin** - *Initial work* - [Geoff-Goodwin-Dev](https://github.com/Geoff-Goodwin-Dev)

@@ -29,6 +29,7 @@ var start;
 var countDownDurationS;
 var secondsRemaining;
 var unusedSeconds = 0;
+var selectedAnswer;
 
 $(document).ready(function() {
 
@@ -105,18 +106,47 @@ $(document).ready(function() {
     }
     $("#timer").text(mm + ':' + ss);
     if(secondsRemaining <= 0) {
-      alert("time ran out");
+      selectedAnswer = "";
+      updateRoundStatusModal("Timeout");
+      $("#modalRoundStatus").css("display", "block");
+
       incorrect++;
       $("#losses").text(incorrect);
       questionCounter++;
-      nextQuestion();
       return;
     }
     timer = setTimeout(countDownTimer,1000);
   }
 
+  function updateRoundStatusModal(status) {
+    switch (status) {
+      case ("Correct"):
+        $("#isCorrect").text("Correct!");
+        $("#correctAnswerParagraph").css("display", "none");
+        break;
+      case ("Incorrect"):
+        $("#isCorrect").text("I'm sorry, that's incorrect");
+        break;
+      case ("Timeout"):
+        $("#isCorrect").text("Time's up!");
+        $("#yourAnswerParagraph").css("display", "none");
+        break;
+      case ("GameOver"):
+        $(".bulletListContainer").css("display", "none");
+        $("#isCorrect").text("The Trivia Game of Thrones has ended!");
+        $("#gameOverContainer").css("display", "block");
+      default:
+        break;
+    }
+    $("#questionReDisplay").text(questionsObjArray[questionCounter].question);
+    $("#correctAnswerReDisplay").text(questionsObjArray[questionCounter].correct);
+    $("#yourAnswerReDisplay").text(selectedAnswer);
+  }
+
   // UPDATE DISPLAY OF THE TRIVIA QUESTION FUNCTION
   function updateQuestionDisplay() {
+    $("#wins").text(correct);
+    $("#losses").text(incorrect);
     $("#question").text(questionsObjArray[questionCounter].question);
     answerDisplayOrder = fYShuffle(answerDisplayOrder);
     console.log("shuffled order for answers", answerDisplayOrder);
@@ -140,7 +170,7 @@ $(document).ready(function() {
 
   // CLICKING AN ANSWER BUTTON FUNCTION
   $("#questionTextContainer").on("click", ".answerButton", function () {
-    var selectedAnswer = $(this).text();
+    selectedAnswer = $(this).text();
     var correctAnswer = questionsObjArray[questionCounter].correct;
     console.log("correct Answer", correctAnswer);
     console.log("Selected Answer Text", selectedAnswer);
@@ -152,22 +182,29 @@ $(document).ready(function() {
 
     // Checking for Correct Answer
     if (selectedAnswer === correctAnswer) {
-      alert("correct");
+      updateRoundStatusModal("Correct");
+      $("#modalRoundStatus").css("display", "block");
+
       correct++;
       $("#wins").text(correct);
     }
     else {
-      alert("incorrect");
+      updateRoundStatusModal("Incorrect");
+      $("#modalRoundStatus").css("display", "block");
+
       incorrect++;
       $("#losses").text(incorrect);
     }
     questionCounter++;
-    nextQuestion();
+
   });
 
+  // ADVANCES QUESTION DISPLAY TO THE NEXT QUESTION
   function nextQuestion() {
     if (questionCounter === 5) {
-      alert("Game Complete")
+      updateRoundStatusModal("GameOver");
+      $("#modalRoundStatus").css("display", "block");
+
     }
     else {
       updateQuestionDisplay();
@@ -176,12 +213,52 @@ $(document).ready(function() {
       countDownTimer(); //sets the timer in motion
     }
   }
+
+  // MODAL RELATED FUNCTIONS
+  $("#instructionsButton").on("click", function() {
+    $("#modalInstruction").css("display", "block");
+  });
+
+  $("#closeModal").on("click", function() {
+    $("#modalInstruction").css("display", "none");
+  });
+
+  $("#closeModalRoundStatus").on("click", function() {
+    resetModal();
+    nextQuestion();
+  });
+
+  function resetModal() {
+    $("#modalRoundStatus").css("display", "none");
+    $("#questionReDisplay").text("");
+    $("#correctAnswerReDisplay").text("");
+    $("#yourAnswerReDisplay").text("");
+    $("#yourAnswerParagraph").css("display", "block");
+    $("#correctAnswerParagraph").css("display", "block");
+    $(".bulletListContainer").css("display", "block");
+    $("#gameOverContainer").css("display", "none");
+  }
+
+
+  $("#yes").on("click", function() {
+    $("#modalRoundStatus").css("display", "none");
+    resetModal();
+    correct = 0;
+    incorrect = 0;
+    answerDisplayOrder = [1, 2, 3, 4];
+    questionsObjArray = [];
+    questionCounter = 0;
+    unusedSeconds = 0;
+    selectedAnswer = "";
+    questionCreation();
+    updateQuestionDisplay();
+    $("#questionTextContainer").css("display", "block");
+    $("#startState").css("display", "none");
+
+    countDownDurationS = 15;
+    start = Date.now(); //sets the starting time for the timer
+    countDownTimer(); //sets the timer in motion
+  });
+
 });
 
-// MODAL RELATED FUNCTIONS
-function openInstructions() {
-  $("#modalInstruction").css("display", "block");
-}
-function closeInstructions() {
-  $("#modalInstruction").css("display", "none");
-}
