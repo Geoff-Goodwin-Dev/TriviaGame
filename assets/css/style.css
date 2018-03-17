@@ -30,7 +30,7 @@ body {
 #gameHeader {
   overflow: hidden;
   font-size: 4vw;
-  padding: 15px;
+  padding: 2%;
 }
 
 .bulletListContainer {
@@ -104,7 +104,6 @@ hr {
 #iconRow {
   background-image: url("../images/housesIconsInverted.png");
   background-size: contain;
-  /*background-position: top;*/
   background-repeat: no-repeat;
   opacity: 0.8;
 }
@@ -177,36 +176,25 @@ li {
   font-size: 4vw;
 }
 
-/*CRYSTAL IMAGE STYLE*/
-
-.crystal-image {
-  width: 20%;
-  margin: 2%;
-  height: 100%;
-  border-radius: 3px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-}
-
 /*INSTRUCTION BUTTON STYLE*/
+/*#instructionsButton {*/
+  /*background-color: rgba(255, 255, 255, 0.5);*/
+  /*display: flex;*/
+  /*line-height: 20px;*/
+  /*padding: 5px;*/
+  /*cursor:pointer;*/
+  /*box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);*/
+/*}*/
 
-#instructionsButton {
-  background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  line-height: 20px;
-  padding: 5px;
-  cursor:pointer;
-  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);
-}
+/*#instructionsCaption {*/
+  /*margin: 0 5px;*/
+/*}*/
 
-#instructionsCaption {
-  margin: 0 5px;
-}
-
-#instructionsIcon {
-  height: 20px;
-  width: 20px;
-  margin: 0 5px;
-}
+/*#instructionsIcon {*/
+  /*height: 20px;*/
+  /*width: 20px;*/
+  /*margin: 0 5px;*/
+/*}*/
 
 /*MODAL WINDOW CLASS STYLING*/
 .topRight {
@@ -227,7 +215,7 @@ li {
 
 .headerText {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 2vw;
 }
 
 .modalBackground {
@@ -250,9 +238,11 @@ li {
   position: relative;
   padding: 15px 30px;
   outline: 0;
-  width: 80%;
+  width: 60%;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
+  line-height: 30px;
+  font-size: 16px;
 }
 
 .zoomAnimation {

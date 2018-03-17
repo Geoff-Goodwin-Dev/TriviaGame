@@ -14,16 +14,16 @@ var q07;
 var q08;
 var q09;
 var q10;
-var q11;
-var q12;
-var q13;
-var q14;
-var q15;
-var q16;
-var q17;
-var q18;
-var q19;
-var q20;
+// var q11;
+// var q12;
+// var q13;
+// var q14;
+// var q15;
+// var q16;
+// var q17;
+// var q18;
+// var q19;
+// var q20;
 var timer;
 var start;
 var countDownDurationS;
@@ -54,15 +54,6 @@ $(document).ready(function() {
     this.answer3 = answer3;
     this.answer4 = answer4;
     this.correct = answer1;
-    // this.logQuestion = function () {
-    //   console.log("Question ID:", this.id);
-    //   console.log("Question:", this.question);
-    //   console.log("Answer 1 (correct):", this.answer1);
-    //   console.log("Answer 2:", this.answer2);
-    //   console.log("Answer 3:", this.answer3);
-    //   console.log("Answer 4:", this.answer4);
-    //   console.log("--------------");
-    // };
   }
 
   // TRIVIA QUESTION OBJECT GENERATION
@@ -81,6 +72,12 @@ $(document).ready(function() {
     questionsObjArray.push(q06);
     q07 = new TriviaQuestion("07", "How is Lyanna Mormont related to Jorah Mormont?", "Cousin", "Daughter", "Wife", "Niece");
     questionsObjArray.push(q07);
+    q08 = new TriviaQuestion("08", "Who is the ruler of the Iron Islands at the beginning of Game of Thrones?", "Balon Greyjoy", "Euron Greyjoy", "Yara Greyjoy", "Aeron Greyjoy");
+    questionsObjArray.push(q08);
+    q09 = new TriviaQuestion("09", "Who was the Mad King’s firstborn son?", "Rhaegar Targaryen", "Aemon Targaryen", "Aegon Targaryen", "Viserys Targaryen");
+    questionsObjArray.push(q09);
+    q10 = new TriviaQuestion("10", "Who is responsible for delivering the fatal blow to Robb Stark at the infamous Red Wedding?", "Roose Bolton", "Walder Frey", "Ramsay Bolton", "Alliser Thorne");
+    questionsObjArray.push(q10);
 
     questionsObjArray = fYShuffle(questionsObjArray);
   }
@@ -135,6 +132,7 @@ $(document).ready(function() {
         $(".bulletListContainer").css("display", "none");
         $("#isCorrect").text("The Trivia Game of Thrones has ended!");
         $("#gameOverContainer").css("display", "block");
+        $("#gameEndStats").text(`You answered ${correct} questions correctly and ${incorrect} questions remained unanswered or were answered incorrectly.`)
       default:
         break;
     }
@@ -240,7 +238,7 @@ $(document).ready(function() {
   }
 
 
-  $("#yes").on("click", function() {
+  $("#playAgain").on("click", function() {
     $("#modalRoundStatus").css("display", "none");
     resetModal();
     correct = 0;

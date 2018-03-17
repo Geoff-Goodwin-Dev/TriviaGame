@@ -78,6 +78,8 @@ Not Applicable: This is a static website for educational purposes and therefore 
 
 * version 1.0 - Creation of file structure, game mechanics, and initial look and feel
 * version 1.1 - Updates to gameplay, replacement of alerts with modals, and introduction of re-play functionality
+* version 1.2 - Break-fixes and refining style
+
 ## Authors
 
 * **Geoff Goodwin** - *Initial work* - [Geoff-Goodwin-Dev](https://github.com/Geoff-Goodwin-Dev)
